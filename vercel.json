@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/calendar-poll",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/send-nudges",
+      "schedule": "0 9 * * 1-5"
+    },
+    {
+      "path": "/api/cron/meeting-reminders",
+      "schedule": "*/30 * * * *"
+    }
+  ]
+}
