@@ -1,0 +1,11 @@
+CREATE INDEX idx_users_tenant_dept ON users (tenant_id, department_id) WHERE employment_status = 'active';
+CREATE INDEX idx_feedback_recipient_date ON feedback_entries (tenant_id, recipient_id, created_at DESC);
+CREATE INDEX idx_feedback_author_date ON feedback_entries (tenant_id, author_id, created_at DESC);
+CREATE INDEX idx_feedback_type ON feedback_entries (tenant_id, type, created_at DESC);
+CREATE INDEX idx_exchange_thread ON feedback_entries (exchange_thread_id, created_at) WHERE exchange_thread_id IS NOT NULL;
+CREATE INDEX idx_calendar_links_next ON calendar_links (next_occurrence_at) WHERE is_active = true;
+CREATE INDEX idx_acknowledgments_feedback ON feedback_acknowledgments (feedback_id);
+CREATE INDEX idx_thread_replies ON feedback_thread_replies (feedback_id, created_at);
+CREATE INDEX idx_meeting_instances_thread ON meeting_instances (exchange_thread_id, scheduled_at DESC);
+CREATE INDEX idx_action_items_assignee ON action_items (tenant_id, assignee_id, status) WHERE status = 'open';
+CREATE INDEX idx_audit_entity ON audit_logs (tenant_id, entity_type, entity_id, created_at DESC);
